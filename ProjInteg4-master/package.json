@@ -1,0 +1,55 @@
+{
+  "name": "project4",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "e2e": "ng e2e",
+    "start:local": "npm run gs-api && ng serve --proxy-config=proxy.conf.json",
+    "gs-api": "npm run gs-api:create-dist && npm run gs-api:download && npm run gs-api:extract && npm run gs-api:swagger-gen",
+    "gs-api:create-dist": "mkdirp tools/swagger/dist && mkdirp tools/swagger/src",
+    "gs-api:download": "xcopy /Y /I /E \"C:\\Users\\imadf\\Downloads\\ProjInteg4-master (1)\\out\\artifacts\\ProjInteg4_master__1__jar\" \"./tools/swagger/dist\" && xcopy /Y /I /E \"C:\\Users\\imadf\\personal\\courses\\gestion de stock\\resources\\gestiondestock\\target\\swagger.json\" \"./tools/swagger/src\"",
+    "gs-api:extract": "node ./tools/swagger/src/swagger.json 0.0.1-SNAPSHOT",
+    "gs-api:swagger-gen": "./node_modules/.bin/ng-swagger-gen -i ./tools/swagger/src/swagger.json -o src/gs-api/src"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^15.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/compiler": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/forms": "^15.0.0",
+    "@angular/platform-browser": "^15.0.0",
+    "@angular/platform-browser-dynamic": "^15.0.0",
+    "@angular/router": "^15.0.0",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "bootstrap": "^5.2.3",
+    "ngx-bootstrap": "^10.2.0",
+    "rxjs": "^7.6.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.12.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.7",
+    "@angular/cli": "~15.2.7",
+    "@angular/compiler-cli": "^15.2.7",
+    "@types/jasmine": "~4.3.0",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "mkdirp": "^3.0.1",
+    "ng-packagr": "^15.2.2",
+    "ng-swagger-gen": "^2.0.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.8.4"
+  }
+
+}
